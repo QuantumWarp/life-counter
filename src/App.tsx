@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import Zone from './player/Zone';
 import SettingsContainer from './settings/SettingsContainer';
 import { useAppContext } from './context/app-context';
+import "./App.css";
 
 function App() {
   const { settings } = useAppContext();

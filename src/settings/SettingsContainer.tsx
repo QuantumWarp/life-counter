@@ -25,6 +25,7 @@ function SettingsContainer() {
     }}>
       <Button sx={{
         position: "absolute",
+        pointerEvents: collapsed ? "auto" : "none",
         opacity: collapsed ? 1 : 0,
         left: 0,
         right: 0,
@@ -39,7 +40,7 @@ function SettingsContainer() {
       onClick={() => setCollapsed(false)}>
         <SettingsIcon fontSize="large" />
       </Button>
-      <Box sx={{ color: "white", pointerEvents: collapsed ? "none" : "auto", opacity: collapsed ? 0 : 1, transition: "0.2s" }}>
+      <Box sx={{ pointerEvents: collapsed ? "none" : "auto", opacity: collapsed ? 0 : 1, transition: "0.2s" }}>
         <SettingsMenu onClose={() => setCollapsed(true)} /> 
       </Box>
     </Box>
