@@ -1,14 +1,15 @@
 import { Box, Button, TextField, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
-import { useCounterContext, usePlayerContext } from "../context/app-context";
+import { usePlayer } from "../context/hooks/use-player";
+import { useCounter } from "../context/hooks/use-counter";
 
 type ZoneOptionsProps = {
   index: number;
   onClose: () => void;
-}
+};
 
 export function ZoneOptions({ index, onClose }: ZoneOptionsProps) {
-  const { player, setPlayer } = usePlayerContext(index);
-  const { counter, setValue } = useCounterContext(index, player.selected);
+  const { player, setPlayer } = usePlayer(index);
+  const { counter, setValue } = useCounter(index);
 
   return (
     <Box
@@ -20,7 +21,7 @@ export function ZoneOptions({ index, onClose }: ZoneOptionsProps) {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "lightgrey",
-        zIndex: 2
+        zIndex: 2,
       }}
     >
       <Typography sx={{ fontSize: "3vh" }}>{player.name}</Typography>

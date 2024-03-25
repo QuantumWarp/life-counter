@@ -1,9 +1,9 @@
+import EastIcon from "@mui/icons-material/East";
+import WestIcon from "@mui/icons-material/West";
 import { Box, Grid, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { Settings } from "../models/settings";
-import EastIcon from "@mui/icons-material/East";
-import WestIcon from "@mui/icons-material/West";
-import CountersSettings from "./CountersSettings";
+import { CountersSettings } from "./CountersSettings";
 
 type PlayerSettingsType = {
   form: UseFormReturn<Settings>;
@@ -11,9 +11,9 @@ type PlayerSettingsType = {
   separate: boolean;
   next: () => void;
   previous: () => void;
-}
+};
 
-function PlayerSettings({ index, form, separate, next, previous }: PlayerSettingsType) {
+export function PlayerSettings({ index, form, separate, next, previous }: PlayerSettingsType) {
   const { control } = form;
 
   return (
@@ -33,7 +33,7 @@ function PlayerSettings({ index, form, separate, next, previous }: PlayerSetting
       <Grid container spacing={1}>
         <Grid item xs={6}>
           <Controller
-            name={`current.${index}.name`}
+            name={`players.${index}.name`}
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField fullWidth label="Name" value={value ? value : ""} onChange={onChange} />
@@ -43,7 +43,7 @@ function PlayerSettings({ index, form, separate, next, previous }: PlayerSetting
 
         <Grid item xs={6}>
           <Controller
-            name={`current.${index}.color`}
+            name={`players.${index}.color`}
             control={control}
             render={({ field: { onChange, value } }) => (
               <TextField fullWidth label="Color" value={value} onChange={onChange} 
@@ -64,5 +64,3 @@ function PlayerSettings({ index, form, separate, next, previous }: PlayerSetting
     </Box>
   )
 }
-
-export default PlayerSettings;

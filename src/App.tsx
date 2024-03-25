@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material';
-import Zone from './player/Zone';
-import SettingsContainer from './settings/SettingsContainer';
-import { useAppContext } from './context/app-context';
+import { Zone } from './player/Zone';
+import { SettingsContainer } from './settings/SettingsContainer';
 import "./App.css";
+import { useSettings } from './context/hooks/use-settings';
 
 function App() {
-  const { settings } = useAppContext();
+  const { settings } = useSettings();
   const { playerCount } = settings;
 
   return (

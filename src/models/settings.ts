@@ -1,8 +1,8 @@
-import { Players } from "./player";
+import { Player } from "./player";
 
 export interface Settings {
   mirror: boolean;
+  lastPreset: string;
   playerCount: number;
-  current: Players;
-  presets: Players[];
+  players: Player[];
 }

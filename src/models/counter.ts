@@ -1,6 +1,9 @@
-export interface Counter {
+export interface PresetCounter {
   icon: string;
   name: string;
   start: number;
-  value?: number;
+}
+
+export interface Counter extends PresetCounter {
+  value: number;
 }

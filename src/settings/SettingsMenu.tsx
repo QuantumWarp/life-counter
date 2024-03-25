@@ -1,16 +1,17 @@
 import { Box, Button, Checkbox, Divider, FormControlLabel, Grid, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
-import { useAppContext } from "../context/app-context";
 import { Controller, useForm } from "react-hook-form";
 import { Settings } from "../models/settings";
-import PlayerSettings from "./PlayerSettings";
+import { PlayerSettings } from "./PlayerSettings";
 import { useState } from "react";
+import { useSettings } from "../context/hooks/use-settings";
+import { PresetSettings } from "./PresetSettings";
 
 type SettingsMenuProps = {
   onClose: () => void
-}
+};
 
-function SettingsMenu({ onClose }: SettingsMenuProps) {
-  const { settings, setSettings } = useAppContext();
+export function SettingsMenu({ onClose }: SettingsMenuProps) {
+  const { settings, setSettings } = useSettings();
   
   const form = useForm<Settings>({ defaultValues: settings });
   const { control, reset, handleSubmit } = form;
@@ -92,6 +93,7 @@ function SettingsMenu({ onClose }: SettingsMenuProps) {
             />
           </Grid>
 
+          <PresetSettings />
           <Grid item xs={12}>
             <Controller
               name="mirror"
@@ -114,5 +116,3 @@ function SettingsMenu({ onClose }: SettingsMenuProps) {
     </Box>
   )
 }
-
-export default SettingsMenu;

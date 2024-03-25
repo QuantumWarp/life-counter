@@ -1,9 +1,9 @@
+import SettingsIcon from "@mui/icons-material/Settings";
 import { Box, Button } from "@mui/material";
 import { useState } from "react";
-import SettingsIcon from "@mui/icons-material/Settings";
-import SettingsMenu from "./SettingsMenu";
+import { SettingsMenu } from "./SettingsMenu";
 
-function SettingsContainer() {
+export function SettingsContainer() {
   const [collapsed, setCollapsed] = useState(true);
   
   return (
@@ -45,6 +45,4 @@ function SettingsContainer() {
       </Box>
     </Box>
   )
-
 }
-export default SettingsContainer;

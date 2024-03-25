@@ -1,14 +1,15 @@
 import { Box, Button, Typography } from "@mui/material";
-import { useCounterContext, usePlayerContext } from "../context/app-context";
+import { usePlayer } from "../context/hooks/use-player";
+import { useCounter } from "../context/hooks/use-counter";
 
 type ZoneForegroundProps = {
   index: number;
   onOptions: () => void;
-}
+};
 
 export function ZoneForeground({ index, onOptions }: ZoneForegroundProps) {
-  const { player } = usePlayerContext(index);
-  const { counter } = useCounterContext(index, player.selected);
+  const { player } = usePlayer(index);
+  const { counter } = useCounter(index);
 
   return (
     <Box
@@ -19,7 +20,7 @@ export function ZoneForeground({ index, onOptions }: ZoneForegroundProps) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        zIndex: 1
+        zIndex: 1,
       }}
     >
       <Box sx={{

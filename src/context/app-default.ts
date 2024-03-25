@@ -1,9 +1,48 @@
 import { basic } from "../models/presets/basic";
-import { Settings } from "../models/settings";
+import { AppData } from "./app-data";
 
-export const defaultSettings: () => Settings = () => ({
-  mirror: true,
-  playerCount: 2,
-  current: basic(),
-  presets: [basic()]
-})
+const initialPreset = basic;
+
+export const initialAppData: () => AppData = () => ({
+  presets: [
+    basic,
+  ],
+  settings: {
+    mirror: true,
+    lastPreset: initialPreset.name,
+    playerCount: initialPreset.playerCount,
+    players: [{
+      ...initialPreset.players[0],
+      selected: 0,
+      color: "lightblue",
+      counters: initialPreset.players[0].counters.map((x) => ({
+        ...x,
+        value: x.start
+      })),
+    }, {
+      ...initialPreset.players[0],
+      selected: 0,
+      color: "pink",
+      counters: initialPreset.players[0].counters.map((x) => ({
+        ...x,
+        value: x.start,
+      })),
+    }, {
+      ...initialPreset.players[0],
+      selected: 0,
+      color: "lightgreen",
+      counters: initialPreset.players[0].counters.map((x) => ({
+        ...x,
+        value: x.start,
+      })),
+    }, {
+      ...initialPreset.players[0],
+      selected: 0,
+      color: "lightgrey",
+      counters: initialPreset.players[0].counters.map((x) => ({
+        ...x,
+        value: x.start,
+      })),
+    }],
+  },
+});
