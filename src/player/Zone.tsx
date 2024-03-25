@@ -1,5 +1,9 @@
-import { Box, Typography } from "@mui/material";
-import { usePlayerContext } from "../context/app-context";
+import { Box } from "@mui/material";
+import { useCounterContext, usePlayerContext } from "../context/app-context";
+import { ZoneForeground } from "./ZoneForeground";
+import { CounterButton } from "./CounterButton";
+import { useState } from "react";
+import { ZoneOptions } from "./ZoneOptions";
 
 type ZoneProps = {
   index: number;
@@ -7,12 +11,34 @@ type ZoneProps = {
 
 function Zone({ index }: ZoneProps) {
   const { player } = usePlayerContext(index);
-  const counter = player.counters[player.selected || 0]
+  const { updateValue } = useCounterContext(index, player.selected);
+  const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <Box sx={{ backgroundColor: player.color, height: "100%", display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-      <Typography sx={{ fontSize: "3vh" }}>{player.name}</Typography>
-      <Typography sx={{ fontSize: "15vh" }}>{counter.value}</Typography>
+    <Box
+      sx={{
+        position: "relative",
+        backgroundColor: player.color,
+        height: "100%",
+        display: "flex",
+        justifyContent: "stretch",
+        alignItems: "stretch"
+      }}
+    >
+      <ZoneForeground index={index} onOptions={() => setShowOptions(true)} />
+      {showOptions && <ZoneOptions index={index} onClose={() => setShowOptions(false)} />}
+
+      <Box display="flex" flexDirection="column" flex={1}>
+        <CounterButton amount={-5} update={updateValue} />
+        <CounterButton amount={-1} update={updateValue} />
+        <CounterButton amount={-20} update={updateValue} />
+      </Box>
+
+      <Box display="flex" flexDirection="column" flex={1}>
+        <CounterButton amount={5} update={updateValue} />
+        <CounterButton amount={1} update={updateValue} />
+        <CounterButton amount={20} update={updateValue} />
+      </Box>
     </Box>
   );
 }
