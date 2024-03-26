@@ -19,7 +19,7 @@ export function CounterButton({ amount, update }: CounterButtonProps) {
       }}
       onClick={() => update(amount)}
     >
-      {positive ? "+" : ""}{amount}
+      {/* {positive ? "+" : ""}{amount} */}
     </Button>
   )
 }

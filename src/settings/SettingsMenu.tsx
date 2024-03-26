@@ -39,7 +39,7 @@ export function SettingsMenu({ onClose }: SettingsMenuProps) {
   };
 
   return (
-    <Box display="flex" alignItems="center" flexDirection="column"  p={2}>
+    <Box display="flex" alignItems="center" flexDirection="column"  p={2} maxHeight="100vh" overflow="auto">
       <Box  maxWidth="400px">
 
       <Box display="flex" justifyContent="center">
