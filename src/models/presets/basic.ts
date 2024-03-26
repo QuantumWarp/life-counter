@@ -6,7 +6,6 @@ export const basic: Preset = {
   playerCount: 2,
   players: [
     {
-      name: "Player 1",
       counters: [{
         icon: "heart",
         name: "Life",
@@ -14,7 +13,6 @@ export const basic: Preset = {
       }],
     },
     {
-      name: "Player 2",
       counters: [{
         icon: "heart",
         name: "Life",
@@ -22,7 +20,6 @@ export const basic: Preset = {
       }]
     },
     {
-      name: "Player 3",
       counters: [{
         icon: "heart",
         name: "Life",
@@ -30,7 +27,6 @@ export const basic: Preset = {
       }],
     },
     {
-      name: "Player 4",
       counters: [{
         icon: "heart",
         name: "Life",

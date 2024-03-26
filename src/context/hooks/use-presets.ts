@@ -6,13 +6,14 @@ export const usePresets = () => {
 
   const presets = data.presets;
 
-  const add = (preset: Preset) => {
-    setData({ ...data, presets: [preset].concat(presets) });
+  const upsert = (preset: Preset) => {
+    const filteredPresets = presets.filter((x) => x.name !== preset.name);
+    setData({ ...data, presets: [preset].concat(filteredPresets) });
   };
 
   const remove = (name: string) => {
     setData({ ...data, presets: presets.filter((x) => x.name == name) });
   };
 
-  return { presets, add, remove };
+  return { presets, upsert, remove };
 };

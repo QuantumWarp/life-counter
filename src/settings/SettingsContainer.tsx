@@ -21,7 +21,8 @@ export function SettingsContainer() {
       marginRight: "auto", 
       marginTop: "auto",
       marginBottom: "auto",
-      transition: "0.2s"
+      transition: "0.2s",
+      zIndex: 10,
     }}>
       <Button sx={{
         position: "absolute",

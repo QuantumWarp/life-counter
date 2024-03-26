@@ -8,17 +8,17 @@ import { CountersSettings } from "./CountersSettings";
 type PlayerSettingsType = {
   form: UseFormReturn<Settings>;
   index: number;
-  separate: boolean;
   next: () => void;
   previous: () => void;
 };
 
-export function PlayerSettings({ index, form, separate, next, previous }: PlayerSettingsType) {
-  const { control } = form;
+export function PlayerSettings({ index, form, next, previous }: PlayerSettingsType) {
+  const { control, watch } = form;
+  const { separateCounters } = watch();
 
   return (
     <Box>
-      <Box display="flex">
+      <Box display="flex" my={1}>
         <IconButton sx={{ flex: 1, visibility: index === 0 ? "hidden" : "visible" }} onClick={() => previous()} >
           <WestIcon />
         </IconButton>
@@ -55,7 +55,7 @@ export function PlayerSettings({ index, form, separate, next, previous }: Player
         </Grid>
       </Grid>
 
-      {(separate || index === 0) && (
+      {(separateCounters || index === 0) && (
         <CountersSettings
           index={index}
           form={form}

@@ -14,7 +14,7 @@ export function CountersSettings({ index, form }: CountersSettingsType) {
 
   return (
     <Box>
-      <Typography display="flex" justifyContent="center" variant="h6" my={2}>
+      <Typography display="flex" justifyContent="center" variant="h6" my={3}>
         Counters
       </Typography>
 
@@ -67,7 +67,7 @@ export function CountersSettings({ index, form }: CountersSettingsType) {
       ))}
 
       <Box display="flex" justifyContent="center" mt={2}>
-        <Button  variant="outlined" onClick={() => append({ icon: "", name: "Counter", start: 10, value: 10 })}>
+        <Button variant="outlined" onClick={() => append({ icon: "", name: "Counter", start: 10, value: 10 })}>
           Add
         </Button>
       </Box>
