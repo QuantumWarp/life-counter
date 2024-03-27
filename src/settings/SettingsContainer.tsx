@@ -2,9 +2,13 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import { Box, IconButton } from "@mui/material";
 import { useState } from "react";
 import { SettingsMenu } from "./SettingsMenu";
+import { useSettings } from "../context/hooks/use-settings";
 
 export function SettingsContainer() {
+  const { settings } = useSettings();
   const [collapsed, setCollapsed] = useState(true);
+  const single = settings.playerCount === 1;
+  const size = single ? "min(30vw, 30vh)" : "min(20vw, 20vh)";
   
   return (
     <Box
@@ -12,26 +16,22 @@ export function SettingsContainer() {
         position: "absolute",
         width:"100vw",
         height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
+        overflow: "hidden"
       }}
     >
       <Box
         sx={{
           position: "relative",
           background: "radial-gradient(black, lightgrey)",
-          width: "100vw",
-          height: "100vh",
-          borderRadius: 0,
+          borderRadius: "50%",
           transition: ".2s",
           overflow: "hidden",
+          border: "5px solid black",
           zIndex: 5,
-          ...(collapsed && {
-            width: "100px",
-            height: "100px",
-            borderRadius: "50%",
-          })
+          width: `calc(${size})`,
+          height: `calc(${size})`,
+          left: `calc(50vw - 0.5 * ${size})`,
+          top: single ? `calc(100vh - 0.5 * ${size})` : `calc(50vh - 0.5 * ${size})`
         }}
       >
         {collapsed && (
@@ -42,44 +42,22 @@ export function SettingsContainer() {
             <SettingsIcon fontSize="large" />
           </IconButton>
         )}
+      </Box>
 
-        <Box 
-          sx={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            width: "100%",
-            height: "100%",
-            borderRadius: collapsed ? "50%" : 0,
-            opacity: collapsed ? 1 : 0,
-            border: "5px solid black",
-            pointerEvents: "none",
-            transition: ".2s",
-          }}
-        />
 
-        <Box
-          sx={{
-            position: "absolute",
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "lightgrey",
-            zIndex: 10,
-            left: 0,
-            top: 0,
-            pointerEvents: "auto",
-            opacity: 1,
-            transition: ".2s",
-            ...(collapsed && {
-              left: "calc(-50vw + 50px)",
-              top: "calc(-50vh + 50px)",
-              pointerEvents: "none",
-              opacity: 0,
-            })
-          }}
-        >
-          <SettingsMenu onClose={() => setCollapsed(true)} /> 
-        </Box>
+      <Box
+        sx={{
+          position: "absolute",
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "lightgrey",
+          zIndex: 10,
+          pointerEvents: "auto",
+          transition: ".2s",
+          top: collapsed ? "100vh" : 0
+        }}
+      >
+        <SettingsMenu onClose={() => setCollapsed(true)} /> 
       </Box>
     </Box>
   )

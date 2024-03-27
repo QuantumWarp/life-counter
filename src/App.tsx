@@ -9,17 +9,17 @@ function App() {
   const { playerCount } = settings;
 
   return (
-    <Grid container alignItems="stretch" sx={{ height: "100vh", position: "relative" }}>
+    <Grid container alignItems="stretch" sx={{ height: "100vh", position: "relative", overflow: "hidden" }}>
       <SettingsContainer />
 
       {playerCount > 1 && (
-        <Grid item xs={playerCount > 2 ? 6 : 12} sx={{ transform: settings.mirror ? "rotate(180deg)" : "auto", zIndex: -1 }}>
+        <Grid item xs={playerCount > 2 ? 6 : 12} sx={{ transform: settings.mirror ? "rotate(180deg)" : "auto" }}>
           <Zone index={1} />
         </Grid>
       )}
 
       {playerCount > 2 && (
-        <Grid item xs={6} sx={{ transform: settings.mirror ? "rotate(180deg)" : "auto", zIndex: -1 }} >
+        <Grid item xs={6} sx={{ transform: settings.mirror ? "rotate(180deg)" : "auto" }} >
           <Zone index={2} />
         </Grid>
       )}

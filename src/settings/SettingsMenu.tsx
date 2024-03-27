@@ -81,7 +81,7 @@ export function SettingsMenu({ onClose }: SettingsMenuProps) {
                   fullWidth
                   value={Number(value)}
                   exclusive
-                  onChange={onChange}
+                  onChange={(_, value) => onChange(value)}
                 >
                   <ToggleButton sx={{ width: "22%", ml: "8%" }} value={1}>One</ToggleButton>
                   <ToggleButton sx={{ width: "22%" }} value={2}>Two</ToggleButton>

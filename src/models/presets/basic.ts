@@ -7,28 +7,28 @@ export const basic: Preset = {
   players: [
     {
       counters: [{
-        icon: "heart",
+        icon: "favorite",
         name: "Life",
         start: 40,
       }],
     },
     {
       counters: [{
-        icon: "heart",
+        icon: "favorite",
         name: "Life",
         start: 40,
       }]
     },
     {
       counters: [{
-        icon: "heart",
+        icon: "favorite",
         name: "Life",
         start: 40,
       }],
     },
     {
       counters: [{
-        icon: "heart",
+        icon: "favorite",
         name: "Life",
         start: 40,
       }],
