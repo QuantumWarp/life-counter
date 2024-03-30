@@ -7,6 +7,7 @@ import { useSettings } from "../context/hooks/use-settings";
 import { PresetSettings } from "./PresetSettings";
 import { dupeCounters, resetCounters } from "../helpers/settings.helper";
 import { CountersSettings } from "./CountersSettings";
+import { FullscreenToggle } from "./FullscreenToggle";
 
 type SettingsMenuProps = {
   onClose: () => void
@@ -40,8 +41,9 @@ export function SettingsMenu({ onClose }: SettingsMenuProps) {
   };
 
   return (
-    <Box display="flex" alignItems="center" flexDirection="column" p={2} maxHeight="100vh" overflow="auto">
-      
+    <Box display="flex" position="relative" alignItems="center" flexDirection="column" p={2} maxHeight="100vh" overflow="auto">
+      <FullscreenToggle />
+
       <Box maxWidth="400px">
         <Box display="flex" justifyContent="center" my={2}>
           <Typography variant="h4">Settings</Typography>
