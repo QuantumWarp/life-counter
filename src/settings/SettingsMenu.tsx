@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useSettings } from "../context/hooks/use-settings";
 import { PresetSettings } from "./PresetSettings";
 import { dupeCounters, resetCounters } from "../helpers/settings.helper";
+import { CountersSettings } from "./CountersSettings";
 
 type SettingsMenuProps = {
   onClose: () => void
@@ -103,22 +104,13 @@ export function SettingsMenu({ onClose }: SettingsMenuProps) {
                 />
               )}
             />
-
-            <Controller
-              name="separateCounters"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <FormControlLabel
-                  label="Separate Counters"
-                  control={<Checkbox checked={value} onChange={onChange} />}
-                />
-              )}
-            />
           </Grid>
 
           <Divider sx={{ width:'100%', mt: 3 }} />
           
           <PlayerSettings key={playerIndex} index={playerIndex} form={form} next={() => setPlayerIndex(playerIndex + 1)} previous={() => setPlayerIndex(playerIndex - 1)} />
+        
+          <CountersSettings form={form} />
         </Grid>
       </form>
       </Box>

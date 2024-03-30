@@ -1,25 +1,26 @@
-import { Counter } from "../../models/counter";
 import { usePlayer } from "./use-player";
+import { useSettings } from "./use-settings";
 
-export const useCounter = (index: number) => {
-  const { player, setPlayer } = usePlayer(index);
+export const useCounter = (playerIndex: number) => {
+  const { settings } = useSettings();
+  const { player, setPlayer } = usePlayer(playerIndex);
 
-  const selected = player.selected;
-  const counter = player.counters[selected];
+  const counter = settings.counters[player.counterSelected];
+  const value = player.counterValues[player.counterSelected];
 
-  const setCounter = (counter: Counter) => {
-    const counters = [...player.counters];
-    counters[selected] = counter;
-    setPlayer({ ...player, counters });
+  const set = (newValue: number) => {
+    const counterValues = [...player.counterValues];
+    counterValues[player.counterSelected] = newValue;
+    setPlayer({ ...player, counterValues });
   };
 
-  const setValue = (newValue: number) => {
-    setCounter({ ...counter, value: newValue });
+  const change = (delta: number) => {
+    set(value + delta);
   };
 
-  const changeValue = (change: number) => {
-    setValue((counter.value || 0) + change);
+  const reset = () => {
+    set(counter.start);
   };
 
-  return  { counter, setValue, changeValue };
+  return  { counter, value, set, change, reset };
 };

@@ -10,7 +10,7 @@ type ZoneForegroundProps = {
 
 export function ZoneForeground({ index, show, onOptions }: ZoneForegroundProps) {
   const { player } = usePlayer(index);
-  const { counter } = useCounter(index);
+  const { counter, value } = useCounter(index);
 
   return (
     <Box
@@ -39,7 +39,7 @@ export function ZoneForeground({ index, show, onOptions }: ZoneForegroundProps) 
         </Typography>
 
         <Button sx={{ color: "black", my: -6, pointerEvents: "all", }} onClick={onOptions}>
-          <Typography sx={{ fontSize: "15vh" }}>{counter.value}</Typography>
+          <Typography sx={{ fontSize: "15vh" }}>{value}</Typography>
         </Button>
 
         <Typography sx={{ fontSize: "2vh", display: "flex", opacity: show ? 1 : 0, transition: "opacity 0.5s" }}>

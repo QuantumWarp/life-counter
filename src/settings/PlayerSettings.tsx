@@ -3,7 +3,6 @@ import WestIcon from "@mui/icons-material/West";
 import { Box, Grid, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { Settings } from "../models/settings";
-import { CountersSettings } from "./CountersSettings";
 
 type PlayerSettingsType = {
   form: UseFormReturn<Settings>;
@@ -13,8 +12,7 @@ type PlayerSettingsType = {
 };
 
 export function PlayerSettings({ index, form, next, previous }: PlayerSettingsType) {
-  const { control, watch } = form;
-  const { separateCounters } = watch();
+  const { control } = form;
 
   return (
     <Box>
@@ -54,13 +52,6 @@ export function PlayerSettings({ index, form, next, previous }: PlayerSettingsTy
           />
         </Grid>
       </Grid>
-
-      {(separateCounters || index === 0) && (
-        <CountersSettings
-          index={index}
-          form={form}
-        />
-      )}
     </Box>
   )
 }

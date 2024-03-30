@@ -1,12 +1,6 @@
-import { Counter, PresetCounter } from "./counter";
-
-export interface PresetPlayer {
-  counters: PresetCounter[];
-}
-
-export interface Player extends PresetPlayer {
+export interface Player {
   name: string;
-  selected: number;
   color: string;
-  counters: Counter[];
+  counterSelected: number;
+  counterValues: number[];
 }

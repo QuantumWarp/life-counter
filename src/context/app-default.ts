@@ -1,53 +1,39 @@
-import { basic } from "../models/presets/basic";
+import { basics } from "../models/presets/basics";
+import { lifeOnly } from "../models/presets/life-only";
 import { AppData } from "./app-data";
 
-const initialPreset = basic;
+const initialPreset = lifeOnly;
 
 export const initialAppData: () => AppData = () => ({
   presets: [
-    basic,
+    lifeOnly,
+    basics,
   ],
   settings: {
     mirror: true,
-    separateCounters: initialPreset.separateCounters,
     lastPreset: initialPreset.name,
     playerCount: initialPreset.playerCount,
+    counters: initialPreset.counters,
     players: [{
-      ...initialPreset.players[0],
       name: "Player 1",
-      selected: 0,
       color: "lightblue",
-      counters: initialPreset.players[0].counters.map((x) => ({
-        ...x,
-        value: x.start
-      })),
+      counterSelected: 0,
+      counterValues: initialPreset.counters.map((x) => x.start),
     }, {
-      ...initialPreset.players[0],
       name: "Player 2",
-      selected: 0,
       color: "pink",
-      counters: initialPreset.players[0].counters.map((x) => ({
-        ...x,
-        value: x.start,
-      })),
+      counterSelected: 0,
+      counterValues: initialPreset.counters.map((x) => x.start),
     }, {
-      ...initialPreset.players[0],
       name: "Player 3",
-      selected: 0,
       color: "lightgreen",
-      counters: initialPreset.players[0].counters.map((x) => ({
-        ...x,
-        value: x.start,
-      })),
+      counterSelected: 0,
+      counterValues: initialPreset.counters.map((x) => x.start),
     }, {
-      ...initialPreset.players[0],
       name: "Player 4",
-      selected: 0,
       color: "lightgrey",
-      counters: initialPreset.players[0].counters.map((x) => ({
-        ...x,
-        value: x.start,
-      })),
+      counterSelected: 0,
+      counterValues: initialPreset.counters.map((x) => x.start),
     }],
   },
 });

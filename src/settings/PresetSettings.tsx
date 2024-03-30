@@ -14,7 +14,7 @@ type PresetSettingsProps = {
 
 export function PresetSettings({ form }: PresetSettingsProps) {
   const { presets, upsert, remove } = usePresets();
-  const [loadedPreset, setLoadedPreset] = useState<string | null>(null);
+  const [loadedPreset, setLoadedPreset] = useState<string>("");
   const [savePresetName, setSavePresetName] = useState<string>("");
   const { getValues, trigger, reset } = form;
   
@@ -28,7 +28,7 @@ export function PresetSettings({ form }: PresetSettingsProps) {
       readonly: false,
       name: savePresetName,
       playerCount: settings.playerCount,
-      players: settings.players
+      counters: settings.counters
     })
   };
   
@@ -54,7 +54,7 @@ export function PresetSettings({ form }: PresetSettingsProps) {
             renderValue={(x) => x}
           >
             {presets.map((x) => (
-              <MenuItem value={x.name}>
+              <MenuItem key={x.name} value={x.name}>
                 <ListItemText primary={x.name} />
                 <IconButton color="error" onClick={(e) => { e.stopPropagation(); remove(x.name); }}>
                   <DeleteIcon />

@@ -12,7 +12,7 @@ type ZoneOptionsProps = {
 export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
   const { settings } = useSettings();
   const { player, setPlayer } = usePlayer(index);
-  const { counter, setValue } = useCounter(index);
+  const { value, set, reset } = useCounter(index);
   const top = (index === 0 || index === 3) || settings.mirror ? "100%" : "-100%";
 
   return (
@@ -44,7 +44,7 @@ export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
           </Grid>
 
           <Grid item xs={4}>
-            <Button size="large" fullWidth variant="outlined" onClick={() => setValue(counter.start)}>
+            <Button size="large" fullWidth variant="outlined" onClick={() => reset()}>
               Reset
             </Button>
           </Grid>
@@ -58,18 +58,18 @@ export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
 
         <Typography sx={{ fontSize: "3vh" }}>{player.name}</Typography>
         
-        <TextField fullWidth label="Value" value={counter.value || 0} onChange={(e) => setValue(Number(e.target.value))} />
+        <TextField fullWidth label="Value" type="number" value={value} onChange={(e) => set(Number(e.target.value))} />
 
         <ToggleButtonGroup
           sx={{ display: "flex", alignItems: "center", mt: 3 }}
           orientation="vertical"
-          value={Number(player.selected || 0)}
+          value={Number(player.counterSelected || 0)}
           exclusive
-          onChange={(_, value) => setPlayer({ ...player, selected: value })}
+          onChange={(_, value) => setPlayer({ ...player, counterSelected: value })}
         >
-          {player.counters.map((x, index) => (
+          {settings.counters.map((x, index) => (
             <ToggleButton key={x.name} value={index}>
-              <Icon sx={{ mr: 1 }}>{x.icon}</Icon>{x.name} {x.value}
+              <Icon sx={{ mr: 1 }}>{x.icon}</Icon>{x.name} {player.counterValues[index]}
             </ToggleButton>
           ))}
         </ToggleButtonGroup>

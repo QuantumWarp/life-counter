@@ -1,9 +1,8 @@
-import { PresetPlayer } from "./player";
+import { Counter } from "./counter";
 
 export interface Preset {
   readonly: boolean;
   name: string;
-  separateCounters: boolean;
   playerCount: number;
-  players: PresetPlayer[];
+  counters: Counter[];
 }

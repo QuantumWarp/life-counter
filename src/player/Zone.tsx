@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { ZoneForeground } from "./ZoneForeground";
 import { CounterButton } from "./CounterButton";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ZoneOptions } from "./ZoneOptions";
 import { usePlayer } from "../context/hooks/use-player";
 import { useCounter } from "../context/hooks/use-counter";
@@ -13,15 +13,15 @@ type ZoneProps = {
 
 export function Zone({ index }: ZoneProps) {
   const { player } = usePlayer(index);
-  const { changeValue } = useCounter(index);
+  const { change } = useCounter(index);
 
   const [showOptions, setShowOptions] = useState(false);
   const [interaction, setInteraction] = useStateTimeout(false, 3000);
   const [thin, setThin] = useState(false);
 
-  const counterButtonClick = (change: number) => {
+  const counterButtonClick = (delta: number) => {
     setInteraction(true);
-    changeValue(change);
+    change(delta);
   }
 
   return (
