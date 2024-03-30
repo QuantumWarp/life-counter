@@ -3,6 +3,7 @@ import { Preset } from '../preset';
 export const basic: Preset = {
   readonly: true,
   name: "Basic",
+  separateCounters: true,
   playerCount: 2,
   players: [
     {

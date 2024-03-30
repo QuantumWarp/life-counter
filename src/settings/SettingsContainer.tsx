@@ -22,26 +22,24 @@ export function SettingsContainer() {
       <Box
         sx={{
           position: "relative",
-          background: "radial-gradient(black, lightgrey)",
+          backgroundColor: "#f7f7f7",
+          backgroundImage: "linear-gradient(to bottom, #f7f7f7, #e7e7e7)",
           borderRadius: "50%",
-          transition: ".2s",
           overflow: "hidden",
-          border: "5px solid black",
           zIndex: 5,
           width: `calc(${size})`,
           height: `calc(${size})`,
           left: `calc(50vw - 0.5 * ${size})`,
-          top: single ? `calc(100vh - 0.5 * ${size})` : `calc(50vh - 0.5 * ${size})`
+          top: single ? `calc(100vh - 0.5 * ${size})` : `calc(50vh - 0.5 * ${size})`,
+          boxShadow: "0px 3px 8px #aaa, inset 0px 2px 3px #fff"
         }}
       >
-        {collapsed && (
-          <IconButton
-            sx={{ color: "white", width: "100%", height: "100%" }}
-            onClick={() => setCollapsed(false)}
-          >
-            <SettingsIcon fontSize="large" />
-          </IconButton>
-        )}
+        <IconButton
+          sx={{ color: "#a7a7a7", width: "100%", height: "100%" }}
+          onClick={() => setCollapsed(false)}
+        >
+          <SettingsIcon sx={{ height: "50%", width: "50%" }} />
+        </IconButton>
       </Box>
 
 

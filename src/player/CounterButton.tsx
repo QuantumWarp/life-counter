@@ -1,17 +1,18 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 type CounterButtonProps = {
   amount: number;
+  primary?: boolean;
+  show: boolean;
   update: (amount: number) => void;
 }
 
-export function CounterButton({ amount, update }: CounterButtonProps) {
+export function CounterButton({ amount, show, update, primary }: CounterButtonProps) {
   const positive = amount > 0;
   return (
     <Button
       sx={{
-        flex: 1,
-        fontSize: "4vh",
+        flex: primary ? 4 : 1,
         display: "flex",
         justifyContent: positive ? "flex-end" : "flex-start",
         padding: 3,
@@ -19,7 +20,7 @@ export function CounterButton({ amount, update }: CounterButtonProps) {
       }}
       onClick={() => update(amount)}
     >
-      {/* {positive ? "+" : ""}{amount} */}
+      <Typography sx={{ opacity: show ? 1 : 0, transition: "opacity 0.5s", fontSize:  primary ? "8vh" :"4vh" }}>{positive ? "+" : ""}{amount}</Typography>
     </Button>
   )
 }
