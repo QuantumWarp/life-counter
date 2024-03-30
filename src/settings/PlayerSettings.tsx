@@ -1,6 +1,6 @@
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
-import { Box, Grid, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 import { Controller, UseFormReturn } from "react-hook-form";
 import { Settings } from "../models/settings";
 
@@ -17,15 +17,15 @@ export function PlayerSettings({ index, form, next, previous }: PlayerSettingsTy
   return (
     <Box>
       <Box display="flex" my={1}>
-        <IconButton sx={{ flex: 1, visibility: index === 0 ? "hidden" : "visible" }} onClick={() => previous()} >
+        <Button sx={{ flex: 1, visibility: index === 0 ? "hidden" : "visible" }} onClick={() => previous()} >
           <WestIcon />
-        </IconButton>
-        <Typography display="flex" justifyContent="center" variant="h5" my={2}>
+        </Button>
+        <Typography display="flex" justifyContent="center" variant="h5" my={2} px={2}>
           Player {index + 1}
         </Typography>
-        <IconButton  sx={{ flex: 1, visibility: index === 3 ? "hidden" : "visible" }} onClick={() => next()} >
+        <Button  sx={{ flex: 1, visibility: index === 3 ? "hidden" : "visible" }} onClick={() => next()} >
           <EastIcon />
-        </IconButton>
+        </Button>
       </Box>
       
       <Grid container spacing={1}>

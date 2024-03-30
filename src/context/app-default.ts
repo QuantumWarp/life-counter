@@ -1,4 +1,5 @@
 import { basics } from "../models/presets/basics";
+import { complex } from "../models/presets/complex";
 import { lifeOnly } from "../models/presets/life-only";
 import { AppData } from "./app-data";
 
@@ -8,6 +9,7 @@ export const initialAppData: () => AppData = () => ({
   presets: [
     lifeOnly,
     basics,
+    complex,
   ],
   settings: {
     mirror: true,

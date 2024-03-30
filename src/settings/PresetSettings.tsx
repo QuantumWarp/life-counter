@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, Select, MenuItem, TextField, Grid, InputAdornment, IconButton, ListItemText } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem, TextField, Grid, InputAdornment, IconButton, ListItemText, FormHelperText } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
@@ -17,6 +17,8 @@ export function PresetSettings({ form }: PresetSettingsProps) {
   const [loadedPreset, setLoadedPreset] = useState<string>("");
   const [savePresetName, setSavePresetName] = useState<string>("");
   const { getValues, trigger, reset } = form;
+
+  const presetNameError = presets.find((x) => x.name === savePresetName)?.readonly === true;
   
   const savePreset = async () => {
     const result = await trigger();
@@ -36,8 +38,9 @@ export function PresetSettings({ form }: PresetSettingsProps) {
     const preset = presets.find((x) => x.name === name);
     if (!preset) return;
     setLoadedPreset(name);
-    setSavePresetName(name);
+    if (!preset.readonly) setSavePresetName(name);
     let settings = getValues();
+    settings.counters = [];
     settings = merge(settings, preset);
     reset(settings);
   };
@@ -62,6 +65,7 @@ export function PresetSettings({ form }: PresetSettingsProps) {
               </MenuItem>
             ))}
           </Select>
+          <FormHelperText>{loadedPreset && 'Preset loaded.'}</FormHelperText>
         </FormControl>
       </Grid>
 
@@ -71,8 +75,10 @@ export function PresetSettings({ form }: PresetSettingsProps) {
           label="New Preset"
           value={savePresetName}
           onChange={(e) => setSavePresetName(e.target.value)}
+          error={presetNameError}
+          helperText={presetNameError ? "Preset is readonly." : " "}
           InputProps={{
-            endAdornment: savePresetName && (
+            endAdornment: savePresetName && !presetNameError && (
               <InputAdornment position="end">
                 <IconButton color="info" onClick={savePreset}>
                   <SaveIcon />

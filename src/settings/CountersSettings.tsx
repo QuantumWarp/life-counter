@@ -13,7 +13,7 @@ export function CountersSettings({ form }: CountersSettingsType) {
 
   return (
     <Box>
-      <Typography display="flex" justifyContent="center" variant="h6" my={3}>
+      <Typography display="flex" justifyContent="center" variant="h5" my={3}>
         Counters
       </Typography>
 
