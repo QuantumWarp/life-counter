@@ -17,7 +17,6 @@ export function Zone({ index }: ZoneProps) {
 
   const [showOptions, setShowOptions] = useState(false);
   const [interaction, setInteraction] = useStateTimeout(false, 3000);
-  const [thin, setThin] = useState(false);
 
   const counterButtonClick = (delta: number) => {
     setInteraction(true);

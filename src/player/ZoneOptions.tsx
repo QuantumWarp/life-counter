@@ -68,13 +68,13 @@ export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
             onChange={(_, value) => setPlayer({ ...player, counterSelected: value })}
           >
             {settings.counters.map((x, index) => (
-              <ToggleButton key={x.name} value={index} sx={{ width: "75%", p: 0, height: "40px" }}>
+              <ToggleButton key={x.name} value={index} sx={{ width: "min(100%, 240px)", p: 0, height: "40px" }}>
                 <Box display="flex" alignItems="center" width="100%" height="100%">
-                  <Box flex={2} display="flex" alignItems="center" justifyContent="center"><Icon>{x.icon}</Icon></Box>
+                  <Box minWidth="40px" display="flex" alignItems="center" justifyContent="center"><Icon>{x.icon}</Icon></Box>
                   <Divider orientation="vertical" sx={{ height: "100%" }} />
-                  <Box flex={8}>{x.name}</Box>
+                  <Box flex={1} sx={{ overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>{x.name}</Box>
                   <Divider orientation="vertical" sx={{ height: "100%" }} />
-                  <Box flex={2}>{player.counterValues[index]}</Box>
+                  <Box minWidth="40px">{player.counterValues[index]}</Box>
                 </Box>
               </ToggleButton>
             ))}

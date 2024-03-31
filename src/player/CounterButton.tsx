@@ -15,12 +15,12 @@ export function CounterButton({ amount, show, update, primary }: CounterButtonPr
         flex: primary ? 4 : 1,
         display: "flex",
         justifyContent: positive ? "flex-end" : "flex-start",
-        padding: 3,
+        padding: 2,
         color: "grey",
       }}
       onClick={() => update(amount)}
     >
-      <Typography sx={{ opacity: show ? 1 : 0, transition: "opacity 0.5s", fontSize:  primary ? "8vh" :"4vh" }}>{positive ? "+" : ""}{amount}</Typography>
+      <Typography sx={{ opacity: show ? 1 : 0, transition: "opacity 0.5s", fontSize: "calc(max(3vh, 3vw))" }}>{positive ? "+" : ""}{amount}</Typography>
     </Button>
   )
 }

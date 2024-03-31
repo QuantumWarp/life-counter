@@ -31,16 +31,17 @@ export function ZoneForeground({ index, show, onOptions }: ZoneForegroundProps) 
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center", maxWidth: "100%"
         }}
       >
-        <Typography sx={{ fontSize: "3vh" }}>
+        <Typography sx={{ fontSize: "calc(max(3vw, 3vh))" }}>
           {player.name}
         </Typography>
 
-        <Button sx={{ color: "black", my: -6, pointerEvents: "all", }} onClick={onOptions}>
-          <Typography sx={{ fontSize: "15vh" }}>{value}</Typography>
-        </Button>
+        <Box sx={{ color: "black",  my: "calc(-1 * max(5vw, 5vh))", maxWidth: "100%", position: "relative", display: "flex", justifyContent: "center" }}>
+          <Typography sx={{ fontSize: "calc(max(14vw, 14vh))", overflow: "auto", maxWidth: "100%" }}>{value}</Typography>
+          <Button sx={{ pointerEvents: "all", width: "50%", maxWidth: "50%", position: "absolute", height: "100%" }} onClick={onOptions} />
+        </Box>
 
         <Typography sx={{ fontSize: "2vh", display: "flex", opacity: show ? 1 : 0, transition: "opacity 0.5s" }}>
           <Icon fontSize="large" sx={{ mr: 1 }}>
