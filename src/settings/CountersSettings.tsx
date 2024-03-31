@@ -39,7 +39,7 @@ export function CountersSettings({ form }: CountersSettingsType) {
               name={`counters.${counterIndex}.start`}
               control={control}
               render={({ field: { onChange, value } }) => (
-                <TextField fullWidth label="Default" type="number" value={value} onChange={onChange} />
+                <TextField fullWidth label="Start" type="number" value={value} onChange={onChange} />
               )}
             />
           </Grid>

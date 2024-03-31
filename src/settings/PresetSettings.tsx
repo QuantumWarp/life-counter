@@ -5,7 +5,6 @@ import { useState } from "react";
 import { usePresets } from "../context/hooks/use-presets";
 import { UseFormReturn } from "react-hook-form";
 import { Settings } from "../models/settings";
-import { dupeCounters, resetCounters } from "../helpers/settings.helper";
 import { merge } from "lodash";
 
 type PresetSettingsProps = {
@@ -23,9 +22,7 @@ export function PresetSettings({ form }: PresetSettingsProps) {
   const savePreset = async () => {
     const result = await trigger();
     if (!result) return;
-    let settings = getValues();
-    settings = dupeCounters(settings);
-    settings = resetCounters(settings);
+    const settings = getValues();
     upsert({
       readonly: false,
       name: savePresetName,

@@ -5,7 +5,7 @@ import { PlayerSettings } from "./PlayerSettings";
 import { useState } from "react";
 import { useSettings } from "../context/hooks/use-settings";
 import { PresetSettings } from "./PresetSettings";
-import { dupeCounters, resetCounters } from "../helpers/settings.helper";
+import { resetCounters, resetChangedCounters } from "../helpers/settings.helper";
 import { CountersSettings } from "./CountersSettings";
 import { FullscreenToggle } from "./FullscreenToggle";
 
@@ -22,7 +22,7 @@ export function SettingsMenu({ onClose }: SettingsMenuProps) {
   const [playerIndex, setPlayerIndex] = useState(0);
 
   const onSubmit = (newSettings: Settings) => {
-    newSettings = dupeCounters(newSettings);
+    newSettings = resetChangedCounters(newSettings, settings);
     setSettings(newSettings);
     onClose()
   };
@@ -34,7 +34,6 @@ export function SettingsMenu({ onClose }: SettingsMenuProps) {
 
   const setDefaults = () => {
     let newSettings = getValues();
-    newSettings = dupeCounters(newSettings);
     newSettings = resetCounters(newSettings);
     setSettings(newSettings);
     onClose();

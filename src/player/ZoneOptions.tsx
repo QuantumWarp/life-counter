@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Icon, TextField, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
+import { Box, Button, Divider, Grid, Icon, TextField, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { usePlayer } from "../context/hooks/use-player";
 import { useCounter } from "../context/hooks/use-counter";
 import { useSettings } from "../context/hooks/use-settings";
@@ -23,20 +23,21 @@ export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
         alignItems: "center",
         backgroundColor: "lightgrey",
-        zIndex: 2,
         transition: ".2s",
-        top: open ? 0 : top
+        top: open ? 0 : top,
+        overflow: "auto",
+        p: 2,
+        zIndex: 8
       }}
     >
       <Box maxWidth="400px">
         <Box display="flex" justifyContent="center">
-          <Typography variant="h5">Player {index + 1} Options</Typography>
+          <Typography variant="h5">{player.name} Options</Typography>
         </Box>
         
-        <Grid container mt={0} mb={4} spacing={2}>
+        <Grid container mt={0} mb={3} spacing={2}>
           <Grid item xs={4}>
             <Button size="large" fullWidth color="error" variant="outlined" onClick={onClose}>
               Cancel
@@ -50,29 +51,35 @@ export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
           </Grid>
           
           <Grid item xs={4}>
-            <Button size="large"fullWidth variant="outlined" type="submit">
+            <Button size="large"fullWidth variant="outlined" onClick={() => reset()}>
               Apply
             </Button>
           </Grid>
         </Grid>
-
-        <Typography sx={{ fontSize: "3vh" }}>{player.name}</Typography>
         
         <TextField fullWidth label="Value" type="number" value={value} onChange={(e) => set(Number(e.target.value))} />
 
-        <ToggleButtonGroup
-          sx={{ display: "flex", alignItems: "center", mt: 3 }}
-          orientation="vertical"
-          value={Number(player.counterSelected || 0)}
-          exclusive
-          onChange={(_, value) => setPlayer({ ...player, counterSelected: value })}
-        >
-          {settings.counters.map((x, index) => (
-            <ToggleButton key={x.name} value={index}>
-              <Icon sx={{ mr: 1 }}>{x.icon}</Icon>{x.name} {player.counterValues[index]}
-            </ToggleButton>
-          ))}
-        </ToggleButtonGroup>
+        <Box>
+          <ToggleButtonGroup
+            sx={{ display: "flex", alignItems: "center", mt: 3 }}
+            orientation="vertical"
+            value={Number(player.counterSelected || 0)}
+            exclusive
+            onChange={(_, value) => setPlayer({ ...player, counterSelected: value })}
+          >
+            {settings.counters.map((x, index) => (
+              <ToggleButton key={x.name} value={index} sx={{ width: "75%", p: 0, height: "40px" }}>
+                <Box display="flex" alignItems="center" width="100%" height="100%">
+                  <Box flex={2} display="flex" alignItems="center" justifyContent="center"><Icon>{x.icon}</Icon></Box>
+                  <Divider orientation="vertical" sx={{ height: "100%" }} />
+                  <Box flex={8}>{x.name}</Box>
+                  <Divider orientation="vertical" sx={{ height: "100%" }} />
+                  <Box flex={2}>{player.counterValues[index]}</Box>
+                </Box>
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        </Box>
       </Box>
     </Box>
   );
