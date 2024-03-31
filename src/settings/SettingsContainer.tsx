@@ -55,7 +55,7 @@ export function SettingsContainer() {
           top: collapsed ? "100vh" : 0
         }}
       >
-        <SettingsMenu onClose={() => setCollapsed(true)} /> 
+        <SettingsMenu open={!collapsed} onClose={() => setCollapsed(true)} /> 
       </Box>
     </Box>
   )

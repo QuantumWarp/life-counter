@@ -38,17 +38,17 @@ export function ZoneForeground({ index, show, onOptions }: ZoneForegroundProps) 
           {player.name}
         </Typography>
 
-        <Box sx={{ color: "black",  my: "calc(-1 * max(5vw, 5vh))", maxWidth: "100%", position: "relative", display: "flex", justifyContent: "center" }}>
+        <Box sx={{ color: "black",  my: "calc(-1 * max(4vw, 4vh))", maxWidth: "100%", position: "relative", display: "flex", justifyContent: "center" }}>
           <Typography sx={{ fontSize: "calc(max(14vw, 14vh))", overflow: "auto", maxWidth: "100%" }}>{value}</Typography>
           <Button sx={{ pointerEvents: "all", width: "50%", maxWidth: "50%", position: "absolute", height: "100%" }} onClick={onOptions} />
         </Box>
 
-        <Typography sx={{ fontSize: "2vh", display: "flex", opacity: show ? 1 : 0, transition: "opacity 0.5s" }}>
-          <Icon fontSize="large" sx={{ mr: 1 }}>
+        <Box sx={{ fontSize: "2vh", display: "flex", opacity: show ? 1 : 0, transition: "opacity 0.5s", alignItems: "center" }}>
+          <Icon sx={{ mr: 1, fontSize: "calc(max(3.5vw, 3.5vh))" }}>
             {counter.icon}
           </Icon>
-          {counter.name}
-        </Typography>
+          <Typography sx={{ fontSize: "calc(max(2vw, 2vh))" }}>{counter.name}</Typography>
+        </Box>
         <Box />
       </Box>
     </Box>

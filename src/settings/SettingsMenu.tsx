@@ -2,7 +2,7 @@ import { Box, Button, Checkbox, Divider, FormControlLabel, Grid, ToggleButton, T
 import { Controller, useForm } from "react-hook-form";
 import { Settings } from "../models/settings";
 import { PlayerSettings } from "./PlayerSettings";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSettings } from "../context/hooks/use-settings";
 import { PresetSettings } from "./PresetSettings";
 import { resetCounters, resetChangedCounters } from "../helpers/settings.helper";
@@ -10,10 +10,11 @@ import { CountersSettings } from "./CountersSettings";
 import { FullscreenToggle } from "./FullscreenToggle";
 
 type SettingsMenuProps = {
+  open: boolean;
   onClose: () => void
 };
 
-export function SettingsMenu({ onClose }: SettingsMenuProps) {
+export function SettingsMenu({ open, onClose }: SettingsMenuProps) {
   const { settings, setSettings } = useSettings();
   
   const form = useForm<Settings>({ defaultValues: settings });
@@ -38,6 +39,11 @@ export function SettingsMenu({ onClose }: SettingsMenuProps) {
     setSettings(newSettings);
     onClose();
   };
+
+  useEffect(() => {
+    if (!open) return;
+    reset(settings)
+  }, [open, reset, settings]);
 
   return (
     <Box display="flex" position="relative" alignItems="center" flexDirection="column" p={2} maxHeight="100vh" overflow="auto">

@@ -21,7 +21,7 @@ export function Zone({ index }: ZoneProps) {
   const counterButtonClick = (delta: number) => {
     setInteraction(true);
     change(delta);
-  }
+  };
 
   return (
     <Box
