@@ -15,7 +15,7 @@ export function CounterButton({ amount, show, update, primary }: CounterButtonPr
         flex: primary ? 4 : 1,
         display: "flex",
         justifyContent: positive ? "flex-end" : "flex-start",
-        padding: 2,
+        px: 2,
         color: "grey",
       }}
       onClick={() => update(amount)}
