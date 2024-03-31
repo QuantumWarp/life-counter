@@ -46,7 +46,17 @@ export function SettingsMenu({ open, onClose }: SettingsMenuProps) {
   }, [open, reset, settings]);
 
   return (
-    <Box display="flex" position="relative" alignItems="center" flexDirection="column" p={2} maxHeight="100vh" overflow="auto">
+    <Box
+      sx={{
+        display: "flex",
+        position: "relative",
+        alignItems: "center",
+        flexDirection: "column",
+        p: 2,
+        maxHeight: "100vh",
+        overflow: "auto",
+      }}
+    > 
       <FullscreenToggle />
 
       <Box maxWidth="400px">
@@ -116,7 +126,13 @@ export function SettingsMenu({ open, onClose }: SettingsMenuProps) {
             <Divider sx={{ width:'100%', mt: 3 }} />
             
             <Grid item xs={12}>
-              <PlayerSettings key={playerIndex} index={playerIndex} form={form} next={() => setPlayerIndex(playerIndex + 1)} previous={() => setPlayerIndex(playerIndex - 1)} />
+              <PlayerSettings
+                key={playerIndex}
+                index={playerIndex}
+                form={form}
+                next={() => setPlayerIndex(playerIndex + 1)}
+                previous={() => setPlayerIndex(playerIndex - 1)}
+              />
             </Grid>
 
             <Divider sx={{ width:'100%', mt: 5 }} />

@@ -9,18 +9,27 @@ type CounterButtonProps = {
 
 export function CounterButton({ amount, show, update, primary }: CounterButtonProps) {
   const positive = amount > 0;
+
   return (
     <Button
       sx={{
-        flex: primary ? 4 : 1,
-        display: "flex",
-        justifyContent: positive ? "flex-end" : "flex-start",
-        px: 2,
         color: "grey",
+        display: "flex",
+        px: 2,
+        flex: primary ? 4 : 1,
+        justifyContent: positive ? "flex-end" : "flex-start",
       }}
       onClick={() => update(amount)}
     >
-      <Typography sx={{ opacity: show ? 1 : 0, transition: "opacity 0.5s", fontSize: "calc(max(3vh, 3vw))" }}>{positive ? "+" : ""}{amount}</Typography>
+      <Typography
+        sx={{
+          opacity: show ? 1 : 0,
+          transition: "opacity 0.5s",
+          fontSize: "calc(max(3vh, 3vw))"
+        }}
+      >
+        {positive ? "+" : ""}{amount}
+      </Typography>
     </Button>
-  )
+  );
 }

@@ -36,7 +36,7 @@ export function Zone({ index }: ZoneProps) {
       }}
     >
       <ZoneForeground index={index} show={interaction} onOptions={() => setShowOptions(true)} />
-      <ZoneOptions open={showOptions} index={index} onClose={() => setShowOptions(false)} />
+      <ZoneOptions index={index} open={showOptions} onClose={() => setShowOptions(false)} />
 
       <Box display="flex" flexDirection="column" flex={1}>
         <CounterButton amount={-5} show={interaction} update={counterButtonClick} />

@@ -20,9 +20,11 @@ export function PlayerSettings({ index, form, next, previous }: PlayerSettingsTy
         <Button sx={{ flex: 1, visibility: index === 0 ? "hidden" : "visible" }} onClick={() => previous()} >
           <WestIcon />
         </Button>
+
         <Typography display="flex" justifyContent="center" variant="h5" my={2} px={2}>
           Player {index + 1}
         </Typography>
+
         <Button  sx={{ flex: 1, visibility: index === 3 ? "hidden" : "visible" }} onClick={() => next()} >
           <EastIcon />
         </Button>
@@ -34,7 +36,7 @@ export function PlayerSettings({ index, form, next, previous }: PlayerSettingsTy
             name={`players.${index}.name`}
             control={control}
             render={({ field: { onChange, value } }) => (
-              <TextField fullWidth label="Name" value={value ? value : ""} onChange={onChange} />
+              <TextField fullWidth label="Name" value={value} onChange={onChange} />
             )}
           />
         </Grid>
@@ -46,7 +48,17 @@ export function PlayerSettings({ index, form, next, previous }: PlayerSettingsTy
             render={({ field: { onChange, value } }) => (
               <TextField fullWidth label="Color" value={value} onChange={onChange} 
               InputProps={{
-                endAdornment: <InputAdornment position="end"><Box sx={{ backgroundColor: value, width: 30, height: 30, borderRadius: 2, border: "1px solid slategrey" }}></Box></InputAdornment>,
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <Box sx={{
+                      backgroundColor: value,
+                      width: 30,
+                      height: 30,
+                      borderRadius: 2,
+                      border: "1px solid slategrey",
+                    }} />
+                  </InputAdornment>
+                )
               }} />
             )}
           />

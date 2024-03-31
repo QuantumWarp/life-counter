@@ -32,5 +32,5 @@ export const complex: Preset = {
     icon: "filter_3",
     name: "Damage 3",
     start: 0,
-  }]
+  }],
 };

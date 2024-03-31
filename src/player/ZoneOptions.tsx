@@ -58,7 +58,9 @@ export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
     >
       <Box width="100%" maxWidth="400px">
         <Box display="flex" justifyContent="center">
-          <Typography variant="h5" textAlign="center">{player.name} Options</Typography>
+          <Typography variant="h5" textAlign="center">
+            {player.name} Options
+          </Typography>
         </Box>
           
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -108,11 +110,21 @@ export function ZoneOptions({ index, open, onClose }: ZoneOptionsProps) {
                   {settings.counters.map((x, index) => (
                     <ToggleButton key={x.name} value={index} sx={{ width: "min(100%, 240px)", p: 0, height: "40px" }}>
                       <Box display="flex" alignItems="center" width="100%" height="100%">
-                        <Box minWidth="40px" display="flex" alignItems="center" justifyContent="center"><Icon>{x.icon}</Icon></Box>
+                        <Box minWidth="40px" display="flex" alignItems="center" justifyContent="center">
+                          <Icon>{x.icon}</Icon>
+                        </Box>
+
                         <Divider orientation="vertical" sx={{ height: "100%" }} />
-                        <Box flex={1} sx={{ overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", px: 0.5 }}>{x.name}</Box>
+
+                        <Box flex={1} sx={{ overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis", px: 0.5 }}>
+                          {x.name}
+                        </Box>
+
                         <Divider orientation="vertical" sx={{ height: "100%" }} />
-                        <Box minWidth="40px">{player.counterValues[index]}</Box>
+
+                        <Box minWidth="40px">
+                          {player.counterValues[index]}
+                        </Box>
                       </Box>
                     </ToggleButton>
                   ))}

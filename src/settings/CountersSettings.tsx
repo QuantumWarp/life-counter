@@ -51,7 +51,11 @@ export function CountersSettings({ form }: CountersSettingsType) {
               render={({ field: { onChange, value } }) => (
                 <TextField fullWidth label="Icon" value={value} onChange={onChange} 
                 InputProps={{
-                  endAdornment: <InputAdornment position="end"><Icon>{value}</Icon></InputAdornment>,
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <Icon>{value}</Icon>
+                    </InputAdornment>
+                  )
                 }} />
               )}
             />

@@ -1,8 +1,8 @@
 import { Grid } from '@mui/material';
 import { Zone } from './player/Zone';
 import { SettingsContainer } from './settings/SettingsContainer';
-import "./App.css";
 import { useSettings } from './context/hooks/use-settings';
+import "./App.css";
 
 function App() {
   const { settings } = useSettings();

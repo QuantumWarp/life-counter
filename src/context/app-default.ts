@@ -4,6 +4,7 @@ import { lifeOnly } from "../models/presets/life-only";
 import { AppData } from "./app-data";
 
 const initialPreset = lifeOnly;
+const initialCounters = initialPreset.counters.map((x) => x.start)
 
 export const initialAppData: () => AppData = () => ({
   presets: [
@@ -20,22 +21,22 @@ export const initialAppData: () => AppData = () => ({
       name: "Player 1",
       color: "lightblue",
       counterSelected: 0,
-      counterValues: initialPreset.counters.map((x) => x.start),
+      counterValues: [...initialCounters],
     }, {
       name: "Player 2",
       color: "pink",
       counterSelected: 0,
-      counterValues: initialPreset.counters.map((x) => x.start),
+      counterValues: [...initialCounters],
     }, {
       name: "Player 3",
       color: "lightgreen",
       counterSelected: 0,
-      counterValues: initialPreset.counters.map((x) => x.start),
+      counterValues: [...initialCounters],
     }, {
       name: "Player 4",
       color: "lightgrey",
       counterSelected: 0,
-      counterValues: initialPreset.counters.map((x) => x.start),
+      counterValues: [...initialCounters],
     }],
   },
 });
